@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "ContactList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Data;
+@model DataTable;
+
+<div class="container-fluid">
+    <div class="portlet-body">
+        <div>
+            <h2>@TempData["CON_Contact_Delete_Msg"]</h2>
+            <h2>@TempData["CON_Contact_Update_Msg"]</h2>
+        </div>
+
+        <div class="container">
+            <h2>Search Box</h2>
+            <hr />
+            <form method="post" asp-area="CON_Contact" asp-controller="CON_Contact">
+                <div class="row">
+
+                    <div class="form-floating mb-7 col-4">
+                        <input type="text" name="Name" class="form-control rounded-pill" id="floatingInput" placeholder="India" value="@ViewBag.Name" />
+                        <label for="floatingInput">&nbsp;&nbsp; Name</label>
+                    </div>
+
+                    <div class="form-floating mb-7 col-4">
+                        <input type="text" name="ContactCategory" class="form-control rounded-pill" id="floatingInput" placeholder="India" value="@ViewBag.ContactCategory" />
+                        <label for="floatingInput">&nbsp;&nbsp; Contact Category</label>
+                    </div>
+
+                    <div class="form-floating mb-7 col-4">
+                        <input type="text" name="Email" class="form-control rounded-pill" id="floatingInput" placeholder="India" value="@ViewBag.Email" />
+                        <label for="floatingInput">&nbsp;&nbsp; Email</label>
+                    </div>
+
+                    <div class="form-floating mb-7 col-4">
+                        <input type="text" id="floatingInput" class="form-control rounded-pill" name="CountryName" placeholder="India" value="@ViewBag.CountryName" />
+                        <label for="floatingInput">&nbsp;&nbsp; Country Name</label>
+                    </div>
+
+                    <div class="form-floating mb-7 col-4">
+                        <input type="text" name="StateName" class="form-control rounded-pill" id="floatingInput" placeholder="India" value="@ViewBag.StateName" />
+                        <label for="floatingInput">&nbsp;&nbsp; State Name</label>
+                    </div>
+
+                    <div class="form-floating mb-7 col-4">
+                        <input type="text" name="CityName" class="form-control rounded-pill" id="floatingInput" placeholder="India" value="@ViewBag.CityName" />
+                        <label for="floatingInput">&nbsp;&nbsp; City Name</label>
+                    </div>
+
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-success rounded-pill" asp-action="Search">Search</button>
+                        &nbsp;
+                        <a class="btn btn-danger rounded-pill" asp-action="Index">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <hr />
+
+        <div class="d-flex">
+            <div style="flex-grow:9">
+                <span style="font-size: 30px; font-weight: 700; margin-bottom: 10px">Contact</span>
+            </div>
+            <div style="flex-grow:1">
+                <form asp-area="CON_Contact" asp-controller="CON_Contact">
+                    <button type="submit" class="btn btn-primary rounded-pill" asp-action="Add">Insert Record</button>
+                </form>
+            </div>
+            <hr />
+        </div>
+    </div>
+    <br />
+
+    <div class="table-responsive pb-3 border-dark border-bottom border-3 align-middle">
+        <table id="kt_datatable_dom_positioning" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+            <thead>
+                <tr class="fw-bold fs-6 text-gray-800 px-7">
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Country Name</th>
+                    <th scope="col">State Name</th>
+                    <th scope="col">City Name</th>
+                    <th scope="col">Contact Category</th>
+                    <th scope="col">Creation Date</th>
+                    <th scope="col">Modification Date</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DataRow dr in Model.Rows)
+                {
+                    <tr>
+                        <td><img alt="logo" src="@Url.Content(String.Format("~/upload/{0}",dr["PhotoPath"]))" style="height :30px; width:30px; border-radius:50%;" /> </td>
+                        <td>@dr["Name"]</td>
+                        <td>@dr["Mobile"]</td>
+                        <td>@dr["Email"]</td>
+                        <td>@dr["Address"]</td>
+                        <td>@dr["CountryName"]</td>
+                        <td>@dr["StateName"]</td>
+                        <td>@dr["CityName"]</td>
+                        <td>@dr["ContactCategory"]</td>
+                        <td>@Convert.ToDateTime(dr["CreationDate"]).ToString("dd-MM-yyyy")</td>
+                        <td>@Convert.ToDateTime(dr["ModificationDate"]).ToString("dd-MM-yyyy")</td>
+                        <td>
+                            <form asp-area="CON_Contact" asp-controller="CON_Contact">
+                                <button type="submit" class="btn btn-primary rounded-pill" asp-action="Add" asp-route-ContactID="@Convert.ToInt32(dr["ContactID"])"><i class="fa-solid fa-pen-to-square"></i></button>
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-area="CON_Contact" asp-controller="CON_Contact">
+                                <input type="hidden" name="ContactID" value="@Convert.ToInt32(dr["ContactID"])" />
+                                <button type="submit" class="btn btn-danger rounded-pill" asp-action="Delete" onclick="return Take_Confirmation()"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        function Take_Confirmation() {
+            if (confirm("Are You Sure You Want To Delete?"))
+                return true;
+            else
+                return false;
+        }
+    </script>
+}

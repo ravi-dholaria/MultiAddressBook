@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "ContactList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model MultiAddressBook.Areas.CON_Contact.Models.CON_ContactModel;
+
+<div class="row">
+    <div class="col">
+
+        <h2>@TempData["CON_Contact_Insert_Msg"]</h2>
+        <div class="container">
+            <h2>Contact</h2>
+            <hr />
+            <form method="post" enctype="multipart/form-data" asp-area="CON_Contact" asp-controller="CON_Contact">
+                @Html.HiddenFor(x => x.ContactID)
+                <div class="form-floating mb-7">
+                    <input type="text" id="floatingInput" class="form-control rounded-pill" asp-for="Name" placeholder="Enter Name Here." />
+                    <label for="floatingInput"><span class="text-danger">*</span>Name</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-7">
+                    <input type="text" id="floatingInput" class="form-control rounded-pill" asp-for="Mobile" placeholder="Enter Mobile Here." />
+                    <label for="floatingInput"><span class="text-danger">*</span>Mobile</label>
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-7">
+                    <input type="text" id="floatingInput" class="form-control rounded-pill" asp-for="Email" placeholder="Enter Email Here." />
+                    <label for="floatingInput"><span class="text-danger">*</span>Email</label>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-7">
+                    <input type="text" id="floatingInput" class="form-control rounded-pill" asp-for="Address" placeholder="Enter Address Here." />
+                    <label for="floatingInput"><span class="text-danger">*</span>Address</label>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-7">
+                    <label><span class="text-danger">*</span>Country</label>
+                    <select type="text" class="form-select rounded-pill" data-control="select2" data-placeholder="Select Country" data-allow-clear="true" asp-for="CountryID" asp-items="@(new SelectList(ViewBag.CountryList,"CountryID","CountryName"))" onchange="funOnCountryChange();">
+                        <option value="">Select Country</option>
+                    </select>
+                    <span asp-validation-for="CountryID" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-7">
+                    <label><span class="text-danger">*</span>State</label>
+                    <select type="text" class="form-select rounded-pill" data-control="select2" data-placeholder="Select State" data-allow-clear="true" asp-for="StateID" asp-items="@(new SelectList(ViewBag.StateList,"StateID","StateName"))" onchange="funOnStateChange();">
+                        <option value="">Select State</option>
+                    </select>
+                    <span asp-validation-for="StateID" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-7">
+                    <label><span class="text-danger">*</span>City</label>
+                    <select type="text" class="form-select rounded-pill" data-control="select2" data-placeholder="Select City" data-allow-clear="true" asp-for="CityID" asp-items="@(new SelectList(ViewBag.CityList,"CityID","CityName"))">
+                        <option value="">Select City</option>
+                    </select>
+                    <span asp-validation-for="CityID" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group mb-7">
+                    <label><span class="text-danger">*</span>Contact Category</label>
+                    <select type="text" class="form-select rounded-pill" data-control="select2" data-placeholder="Select Contact Category" data-allow-clear="true" asp-for="ContactCategoryID" asp-items="@(new SelectList(ViewBag.ContactCategoryList,"ContactCategoryID","ContactCategory"))">
+                        <option value="">Select Contact Category</option>
+                    </select>
+                    <span asp-validation-for="ContactCategoryID" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-7">
+                    <label class="form-label">Image</label>
+                    <input type="file" class="form-control rounded-pill" asp-for="File" placeholder="Upload File." />
+                </div>
+
+                @Html.HiddenFor(x => x.CreationDate)
+                @Html.HiddenFor(x => x.ModificationDate)
+                @Html.HiddenFor(x => x.PhotoPath)
+                <input type="hidden" class="form-control" asp-for="UserID" value="@ViewBag.UserID" />
+
+                <div class="row">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-success rounded-pill" asp-action="Save">Save</button>
+                        &nbsp;
+                        <a class="btn btn-danger rounded-pill" asp-action="Index">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    //making dynamically list of state according to the change in Country
+    function funOnCountryChange() {
+        var CountryID = $("#CountryID").val();
+        var UserID = $("#UserID").val();
+
+        $("#StateID").empty();
+        $("#StateID").append($("<option></option>").val("").html("Select State"));
+        $("#CityID").empty();
+        $("#CityID").append($("<option></option>").val("").html("Select City"));
+        if (CountryID !== "") {
+            $.ajax(
+                {
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "@Url.Action("LOC_State_DropDownByCountry","CON_Contact", new {area="CON_Contact"})" + "?&CountryID=" + CountryID + "&UserID=" + UserID,
+                    data: {},
+                    dataType: "json",
+                    success: function (Result) {
+                        $.each(Result, function (key, value) {
+                            $("#StateID").append($("<option></option>").val(value.stateID).html(value.stateName));
+                        });
+                    },
+                    error: function (err) {
+                        alert("Error While Running AJAX");
+                    }
+                }
+            )
+        }
+    }
+
+    function funOnStateChange() {
+        var StateID = $("#StateID").val();
+        var UserID = $("#UserID").val();
+
+        $("#CityID").empty();
+        $("#CityID").append($("<option></option>").val("").html("Select City"));
+        if (StateID !== "") {
+            $.ajax(
+                {
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "@Url.Action("LOC_City_DropDownByState","CON_Contact", new {area = "CON_Contact"})" + "?&StateID=" + StateID + "&UserID=" + UserID,
+                    data: {},
+                    dataType: "json",
+                    success: function (Result) {
+                        $.each(Result, function (key, value) {
+                            $("#CityID").append($("<option></option>").val(value.cityID).html(value.cityName));
+                        });
+                    },
+                    error: function (err) {
+                        alert("Error While Running AJAX");
+                    }
+                }
+            )
+        }
+    }
+</script>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

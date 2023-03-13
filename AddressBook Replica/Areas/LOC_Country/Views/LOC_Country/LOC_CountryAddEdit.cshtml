@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Country Add/Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model MultiAddressBook.Areas.LOC_Country.Models.LOC_CountryModel;
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h2>@TempData["LOC_Country_Insert_Msg"]</h2>
+        <div class="container">
+            <h2>Country</h2>
+            <hr />
+            <form method="post" asp-area="LOC_Country" asp-controller="LOC_Country">
+
+                @Html.HiddenFor(x => x.CountryID)
+
+                <div class="form-floating mb-7">
+                    <input type="text" class="form-control rounded-pill" id="floatingInput" asp-for="CountryName" placeholder="India" />
+                    <label for="floatingInput"><span class="text-danger">*</span>Country Name</label>
+                    <span asp-validation-for="CountryName" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-7">
+                    <input type="text" class="form-control rounded-pill" id="floatingInput" asp-for="CountryCode" placeholder="IND" />
+                    <label for="floatingInput"><span class="text-danger">*</span>Country Code</label>
+                    <span asp-validation-for="CountryCode" class="text-danger"></span>
+                </div>
+
+                @Html.HiddenFor(x => x.CreationDate)
+                @Html.HiddenFor(x => x.ModificationDate)
+                <input type="hidden" class="form-control" asp-for="UserID" value="@ViewBag.UserID" />
+
+                <div class="row">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-success rounded-pill" asp-action="Save">Save</button>
+                        &nbsp;
+                        <a class="btn btn-danger rounded-pill" asp-action="Index">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

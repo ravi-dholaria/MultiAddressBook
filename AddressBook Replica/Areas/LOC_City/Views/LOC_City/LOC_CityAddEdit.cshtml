@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "CountryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using MultiAddressBook.Areas.LOC_City.Models;
+@model LOC_CityModel;
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h2>@TempData["LOC_City_Insert_Msg"]</h2>
+        <div class="container">
+            <h2>City</h2>
+            <hr />
+            <form method="post" asp-area="LOC_City" asp-controller="LOC_City">
+
+                @Html.HiddenFor(x => x.CityID)
+
+                <div class="form-group mb-7">
+                    <label><span class="text-danger">*</span>Country</label>
+                    <select class="form-select rounded-pill" data-control="select2" data-placeholder="Select Country" data-allow-clear="true" asp-for="CountryID" asp-items="@(new SelectList(ViewBag.CountryList, "CountryID", "CountryName"))" onchange="funOnStateChange();">
+                        <option value=""></option>
+                    </select>
+                    <span asp-validation-for="CountryID" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-7">
+                    <label><span class="text-danger">*</span>State</label>
+                    <select class="form-select rounded-pill" data-control="select2" data-placeholder="Select State" data-allow-clear="true" asp-for="StateID" asp-items="@(new SelectList(ViewBag.StateList,"StateID","StateName"))">
+                        <option value=""></option>
+                    </select>
+                    <span asp-validation-for="StateID" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-7">
+                    <input type="text" class="form-control rounded-pill" id="floatingInput" asp-for="CityName" placeholder="Enter City Name Here..." />
+                    <label for="floatingInput"><span class="text-danger">*</span>City</label>
+                    <span asp-validation-for="CityName" class="text-danger"></span>
+                </div>
+
+
+                @Html.HiddenFor(x => x.CreationDate)
+                @Html.HiddenFor(x => x.ModificationDate)
+                <input type="hidden" class="form-control" asp-for="UserID" value="@ViewBag.UserID" />
+
+                <div class="row">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-success rounded-pill" asp-action="Save">Save</button>
+                        &nbsp;
+                        <a class="btn btn-danger rounded-pill" asp-action="Index">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function funOnStateChange() {
+        var CountryID = $("#CountryID").val();
+        var UserID = $("#UserID").val();
+
+        if (CountryID !== "") {
+            $("#StateID").empty();
+            $("#StateID").append($("<option></option>").val("").html("Select State"));
+            $.ajax(
+                {
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "@Url.Action("LOC_State_DropDownByCountry","LOC_City", new { area = "LOC_City" })" + "?&CountryID=" + CountryID + "&UserID=" + UserID,
+                    data: { },
+                    dataType: "json",
+                    success: function (Result) {
+                        $.each(Result, function (key, value) {
+                            $("#StateID").append($("<option></option>").val(value.stateID).html(value.stateName));
+                        });
+                    },
+                    error: function (err) {
+                        alert("Error While Running AJAX");
+                    }
+                }
+            )
+        }
+        else {
+            $("#StateID").empty();
+            $("#StateID").append($("<option></option>").val("").html("Select State"));
+        }
+    }
+</script>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

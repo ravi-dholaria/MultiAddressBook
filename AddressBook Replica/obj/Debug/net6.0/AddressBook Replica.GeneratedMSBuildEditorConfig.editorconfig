@@ -1,0 +1,109 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AddressBook_Replica
+build_property.RootNamespace = AddressBook_Replica
+build_property.ProjectDir = E:\Addressbook\ASP.Net_Projects\AddressBook Replica\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\Addressbook\ASP.Net_Projects\AddressBook Replica
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/CON_ContactCategory/Views/CON_ContactCategory/CON_ContactCategoryAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ09OX0NvbnRhY3RDYXRlZ29yeVxWaWV3c1xDT05fQ29udGFjdENhdGVnb3J5XENPTl9Db250YWN0Q2F0ZWdvcnlBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/CON_ContactCategory/Views/CON_ContactCategory/CON_ContactCategoryList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ09OX0NvbnRhY3RDYXRlZ29yeVxWaWV3c1xDT05fQ29udGFjdENhdGVnb3J5XENPTl9Db250YWN0Q2F0ZWdvcnlMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/CON_ContactCategory/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ09OX0NvbnRhY3RDYXRlZ29yeVxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/CON_Contact/Views/CON_Contact/CON_ContactAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ09OX0NvbnRhY3RcVmlld3NcQ09OX0NvbnRhY3RcQ09OX0NvbnRhY3RBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/CON_Contact/Views/CON_Contact/CON_ContactList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ09OX0NvbnRhY3RcVmlld3NcQ09OX0NvbnRhY3RcQ09OX0NvbnRhY3RMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/CON_Contact/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ09OX0NvbnRhY3RcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/LOC_City/Views/LOC_City/LOC_CityAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTE9DX0NpdHlcVmlld3NcTE9DX0NpdHlcTE9DX0NpdHlBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/LOC_City/Views/LOC_City/LOC_CityList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTE9DX0NpdHlcVmlld3NcTE9DX0NpdHlcTE9DX0NpdHlMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/LOC_City/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTE9DX0NpdHlcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/LOC_Country/Views/LOC_Country/LOC_CountryAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTE9DX0NvdW50cnlcVmlld3NcTE9DX0NvdW50cnlcTE9DX0NvdW50cnlBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/LOC_Country/Views/LOC_Country/LOC_CountryList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTE9DX0NvdW50cnlcVmlld3NcTE9DX0NvdW50cnlcTE9DX0NvdW50cnlMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/LOC_Country/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTE9DX0NvdW50cnlcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/LOC_State/Views/LOC_State/LOC_StateAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTE9DX1N0YXRlXFZpZXdzXExPQ19TdGF0ZVxMT0NfU3RhdGVBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/LOC_State/Views/LOC_State/LOC_StateList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTE9DX1N0YXRlXFZpZXdzXExPQ19TdGF0ZVxMT0NfU3RhdGVMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Areas/LOC_State/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTE9DX1N0YXRlXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Views/SEC_User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU0VDX1VzZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Views/Shared/_Layout_Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Addressbook/ASP.Net_Projects/AddressBook Replica/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-qqet5c4er8

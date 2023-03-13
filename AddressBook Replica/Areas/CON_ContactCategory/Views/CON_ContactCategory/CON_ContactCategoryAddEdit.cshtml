@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Contact Category Add/Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model MultiAddressBook.Areas.CON_ContactCategory.Models.CON_ContactCategoryModel;
+
+<div class="row">
+    <div class="col">
+
+        <h2>@TempData["CON_ContactCategory_Insert_Msg"]</h2>
+        <h2>Contact Category</h2>
+        <hr />
+        <form asp-area="CON_ContactCategory" asp-controller="CON_ContactCategory">
+
+            @Html.HiddenFor(x => x.ContactCategoryID)
+
+            <div class="form-floating mb-7">
+                <input type="text" class="form-control rounded-pill" id="floatingInput" asp-for="ContactCategory" placeholder="Friend" />
+                <label for="floatingInput"><span class="text-danger">*</span>Contact Category</label>
+                <span asp-validation-for="ContactCategory" class="text-danger"></span>
+            </div>
+
+            @Html.HiddenFor(x => x.CreationDate)
+            @Html.HiddenFor(x => x.ModificationDate)
+            <input type="hidden" class="form-control" asp-for="UserID" value="@ViewBag.UserID"/>
+
+            <div class="row">
+                <div class="col-4">
+                    <button type="submit" class="btn btn-success rounded-pill" asp-action="Save">Save</button>
+                    &nbsp;
+                    <a class="btn btn-danger rounded-pill" asp-action="Index">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

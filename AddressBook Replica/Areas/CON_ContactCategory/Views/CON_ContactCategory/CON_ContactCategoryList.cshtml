@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "ContactCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Data;
+@model DataTable;
+
+<div class="container-fluid">
+    <div class="portlet-body">
+        <div>
+            <h2>@TempData["CON_ContactCategory_Update_Msg"]</h2>
+            <h2>@TempData["CON_ContactCategory_Delete_Msg"]</h2>
+        </div>
+
+        <div class="container">
+            <h2>Search Box</h2>
+            <hr />
+            <form method="post" asp-area="CON_ContactCategory" asp-controller="CON_ContactCategory">
+                <div class="row">
+                    <div class="form-floating mb-7 col-4">
+                        <input type="text" name="ContactCategory" class="form-control rounded-pill" id="floatingInput" placeholder="Friend" value="@ViewBag.ContactCategory" />
+                        <label for="floatingInput">&nbsp;&nbsp; Contact Category</label>
+                    </div>
+
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-success rounded-pill" asp-action="Search">Search</button>
+                        &nbsp;
+                        <a class="btn btn-danger rounded-pill" asp-action="Index">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <hr />
+
+        <div class="d-flex">
+            <div style="flex-grow:9">
+                <span style="font-size: 30px; font-weight: 700; margin-bottom: 10px">City</span>
+            </div>
+            <div style="flex-grow:1">
+                <form asp-area="CON_ContactCategory" asp-controller="CON_ContactCategory" >
+                    <button type="submit" class="btn btn-primary rounded-pill" asp-action="Add">Insert Record</button>
+                </form>
+            </div>
+            <hr />
+        </div>
+    </div>
+
+    <div class="table-responsive pb-3 border-dark border-bottom border-3 align-middle">
+        <table id="kt_datatable_dom_positioning" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+            <thead>
+                <tr class="fw-bold fs-6 text-gray-800 px-7">
+
+                    <th scope="col">Contact Category Name</th>
+                    <th scope="col">Creation Date</th>
+                    <th scope="col">Modification Date</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            <tbody>
+                    @foreach (DataRow dr in Model.Rows)
+                    {
+                    <tr>
+                        <td>@dr["ContactCategory"]</td>
+                        <td>@Convert.ToDateTime(dr["CreationDate"]).ToString("dd-MM-yyyy")</td>
+                        <td>@Convert.ToDateTime(dr["ModificationDate"]).ToString("dd-MM-yyyy")</td>
+                        <td>
+                            <form asp-area="CON_ContactCategory" asp-controller="CON_ContactCategory">
+                                <button type="submit" class="btn btn-primary rounded-pill" asp-action="Add" asp-route-ContactCategoryID="@Convert.ToInt32(dr["ContactCategoryID"])"><i class="fa-solid fa-pen-to-square"></i></button>
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-area="CON_ContactCategory" asp-controller="CON_ContactCategory">
+                                <input type="hidden" name="ContactCategoryID" value="@Convert.ToInt32(dr["ContactCategoryID"])" />
+                                <button type="submit" class="btn btn-danger rounded-pill" asp-action="Delete" onclick="return Take_Confirmation()"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        function Take_Confirmation() {
+            if (confirm("Are You Sure You Want To Delete?"))
+                return true;
+            else
+                return false;
+        }
+    </script>
+}
